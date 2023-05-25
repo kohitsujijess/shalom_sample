@@ -39,6 +39,12 @@ def login():
         redirect_uri=url_for('callback', _external=True)
     )
 
+@app.route('/login2')
+def login2():
+    return redirect(
+        'http://localhost:8000/panda/login?redirect=localhost:3000'
+    )
+
 @app.route('/callback', methods=['GET', 'POST'])
 def callback():
     token = oauth.auth0.authorize_access_token()
